@@ -27,7 +27,9 @@ class CookieController extends Controller
      */
     public function apiSaveCookie(Request $request)
     {
+        $ip = $request->ip();
         $request = $request->all();
+        $request['ip'] = $ip;
         $service = $this->cookieService->saveCookie($request);
 
         $jsonOut = [
