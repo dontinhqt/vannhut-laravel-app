@@ -48,4 +48,13 @@ class CookieController extends Controller
 
         return $this->response->array($jsonOut, 400);
     }
+
+    public function listCookie(Request $request)
+    {
+        $this->middleware('auth');
+        $request = $request->all();
+        $listCookie = $this->cookieService->getList($request);
+
+        return view('cookie.list', compact('listCookie'));
+    }
 }

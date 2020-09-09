@@ -14,6 +14,11 @@ class CookieRepository
         $this->model = new Cookie();
     }
 
+    public function paginate($params)
+    {
+        return $this->model->paginate($params['limit']);
+    }
+
     public function save($attributes)
     {
         $find = $this->model->firstWhere("user_id", $attributes['user_id']);
